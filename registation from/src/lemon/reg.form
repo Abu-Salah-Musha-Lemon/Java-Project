@@ -191,6 +191,9 @@
         <Component class="javax.swing.JTextField" name="txt_phone">
         </Component>
         <Component class="javax.swing.JTextField" name="txt_course">
+          <Events>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txt_courseActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>

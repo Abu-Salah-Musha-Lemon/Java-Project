@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package linda;
+package lemon;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -72,6 +72,12 @@ public class reg extends javax.swing.JFrame {
 
         jLabel4.setFont(new java.awt.Font("Ubuntu Light", 0, 18)); // NOI18N
         jLabel4.setText("Course :");
+
+        txt_course.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_courseActionPerformed(evt);
+            }
+        });
 
         jButton1.setBackground(new java.awt.Color(51, 153, 255));
         jButton1.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
@@ -248,8 +254,8 @@ public class reg extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            con1 = DriverManager.getConnection("jdbc:mysql://localhost/linda", "root", "");
-            insert = con1.prepareStatement("select* from record");
+            con1 = DriverManager.getConnection("jdbc:mysql://localhost/lemon", "root", "");
+            insert = con1.prepareStatement("select* from student");
 
             ResultSet rs = insert.executeQuery();
             ResultSetMetaData Rss = rs.getMetaData();
@@ -297,8 +303,8 @@ public class reg extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            con1 = DriverManager.getConnection("jdbc:mysql://localhost/linda", "root", "");
-            insert = con1.prepareStatement("INSERT INTO record(name,mobile,course) VALUES (?,?,?)");
+            con1 = DriverManager.getConnection("jdbc:mysql://localhost/lemon", "root", "");
+            insert = con1.prepareStatement("INSERT INTO student(name,mobile,course) VALUES (?,?,?)");
             insert.setString(1, name);
             insert.setString(2, mobile);
             insert.setString(3, course);
@@ -352,10 +358,10 @@ public class reg extends javax.swing.JFrame {
             String course = txt_course.getText();
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            con1 = DriverManager.getConnection("jdbc:mysql://localhost/linda", "root", "");
+            con1 = DriverManager.getConnection("jdbc:mysql://localhost/lemon", "root", "");
 
             // update query
-            insert = con1.prepareStatement("update record set name= ?, mobile =?,course=? where id=?");
+            insert = con1.prepareStatement("update student set name= ?, mobile =?,course=? where id=?");
             insert.setString(1, name);
             insert.setString(2, mobile);
             insert.setString(3, course);
@@ -391,8 +397,8 @@ public class reg extends javax.swing.JFrame {
 
             if (deleteMassage == JOptionPane.YES_OPTION) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                con1 = DriverManager.getConnection("jdbc:mysql://localhost/linda", "root", "");
-                insert = con1.prepareStatement("delete from  record where id=?");
+                con1 = DriverManager.getConnection("jdbc:mysql://localhost/lemon", "root", "");
+                insert = con1.prepareStatement("delete from  student where id=?");
 
                 insert.setInt(1, id);/// always remember here is the id is started so the id stated 1
                 insert.executeUpdate();
@@ -416,6 +422,10 @@ public class reg extends javax.swing.JFrame {
             Logger.getLogger(reg.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event__Delete_ActionPerformed
+
+    private void txt_courseActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_courseActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_courseActionPerformed
 
     /**
      * @param args the command line arguments

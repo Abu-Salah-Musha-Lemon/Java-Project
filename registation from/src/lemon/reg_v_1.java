@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
-package linda;
+package lemon;
 
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
@@ -239,8 +239,8 @@ public class reg_v_1 extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            con1 = DriverManager.getConnection("jdbc:mysql://localhost/linda", "root", "");
-            insert = con1.prepareStatement("select* from record");
+            con1 = DriverManager.getConnection("jdbc:mysql://localhost/lemon", "root", "");
+            insert = con1.prepareStatement("select* from student");
 
             ResultSet rs = insert.executeQuery();
             ResultSetMetaData Rss = rs.getMetaData();
@@ -278,8 +278,8 @@ public class reg_v_1 extends javax.swing.JFrame {
         try {
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            con1 = DriverManager.getConnection("jdbc:mysql://localhost/linda", "root", "");
-            insert = con1.prepareStatement("INSERT INTO record(name,mobile,course) VALUES (?,?,?)");
+            con1 = DriverManager.getConnection("jdbc:mysql://localhost/lemon", "root", "");
+            insert = con1.prepareStatement("INSERT INTO student(name,mobile,course) VALUES (?,?,?)");
             insert.setString(1, name);
             insert.setString(2, mobile);
             insert.setString(3, course);
@@ -331,10 +331,10 @@ public class reg_v_1 extends javax.swing.JFrame {
             String course = txt_course.getText();
             Class.forName("com.mysql.cj.jdbc.Driver");
 
-            con1 = DriverManager.getConnection("jdbc:mysql://localhost/linda", "root", "");
+            con1 = DriverManager.getConnection("jdbc:mysql://localhost/lemon", "root", "");
 
             // update query
-            insert = con1.prepareStatement("update record set name= ?, mobile =?,course=? where id=?");
+            insert = con1.prepareStatement("update student set name= ?, mobile =?,course=? where id=?");
             insert.setString(1, name);
             insert.setString(2, mobile);
             insert.setString(3, course);
@@ -364,12 +364,12 @@ public class reg_v_1 extends javax.swing.JFrame {
             int selectedIndex = table_update.getSelectedRow();
             int id = Integer.parseInt(dt.getValueAt(selectedIndex, 0).toString());
 
-            int deleteMassage = JOptionPane.showConfirmDialog(null, "do you want to delete the record", "Warning", JOptionPane.YES_NO_OPTION);
+            int deleteMassage = JOptionPane.showConfirmDialog(null, "do you want to delete the student", "Warning", JOptionPane.YES_NO_OPTION);
 
             if (deleteMassage == JOptionPane.YES_OPTION) {
                 Class.forName("com.mysql.cj.jdbc.Driver");
-                con1 = DriverManager.getConnection("jdbc:mysql://localhost/linda", "root", "");
-                insert = con1.prepareStatement("delete from  record where id=?");
+                con1 = DriverManager.getConnection("jdbc:mysql://localhost/lemon", "root", "");
+                insert = con1.prepareStatement("delete from  student where id=?");
 
                 insert.setInt(1, id);/// always remember here is the id is started so the id stated 1
                 insert.executeUpdate();
